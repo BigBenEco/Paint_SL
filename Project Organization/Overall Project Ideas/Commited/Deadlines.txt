@@ -1,6 +1,6 @@
-First Dead Line
+First Deadine
 November 19, Before Ten AM. We must be in lab.
-The Presentation of our oporating GUI is manditory.
+The Presentation of our operating GUI is mandatory.
 
 Requirements:
 
@@ -15,9 +15,9 @@ Line Drawing
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Final Dead Line
+Final Deadline
 December 3, Before Ten AM. We must be in lab (I assume, it would at least be optimal).
-The Presentation of our oporating program/project is manditory.
+The Presentation of our operating program/project is mandatory.
 
 Requirements:
 
@@ -42,7 +42,7 @@ Rotate canvas 90 degrees
 Undo button that will back up four levels.
 Fill with color tool
 
-((I think we can do four of them with little to no major hashle, the fill, the undo, the bounding box, and the rotate; I am familar with these))
+((I think we can do four of them with little to no major hassle, the fill, the undo, the bounding box, and the rotate; I am familiar with these))
 
-Consider this and Overall check list, we must organize to achieve these goals. 
-Add any additianal goals that feel are needed, or break down the goals and list them in the Goals.txt document.
+Consider this and Overall checklist, we must organize to achieve these goals. 
+Add any additional goals that feel are needed, or break down the goals and list them in the Goals.txt document.
