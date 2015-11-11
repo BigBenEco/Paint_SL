@@ -1,45 +1,82 @@
 Intro:
+
 This document covers ideas of how to organize things at the highest level.
 
+
+
 An Example of what I mean is this:
-The Repository has in it an intorductory Read Me document, and two subfolders.
-These two subfolders help organize what we are doing into to major catagories.
-The first catagory that comes to mind of course is a place to do all the work we want to do for the assignment, aka all the coding, this folder is called "Project Files."
-The other catagory is something I decided to highlight as important. Basically, everything that we don't want to get mixed up in the folder of coding but is still important to us succeding goes into the folder "Project Organization."
-Now, other than coding, the other thing I imagine us making is notes to eachother about how we might go about things, such as propasals of UML diagrams.
-That is the main idea atleast. From this point on, there are paragraphs that highlight files and folders and what they are to be used for.
+The Repository has in it an introductory Readme document, and two subfolders.
+These two sub folders help organize what we are doing into two major categories.
+The first category that comes to mind of course is a place to do all the work we want to do for the assignment, aka all the coding, this folder is called "Project Files."
+The other category is something I decided to highlight as important. Basically, everything that we don't want to get mixed up in the folder of coding but is still important to us succeeding goes into the folder "Project Organization."
+Now, other than coding, the other thing I imagine us making is notes to each other about how we might go about things, such as proposals of UML diagrams.
+That is the main idea at least. From this point on, there are paragraphs that highlight files and folders and what they are to be used for.
+
+
 
 End of Intro:
 
+
+
 --- Level 1
+
+
 
 >ReadMe.md: The intorductory document to get people on the right track of understanding this repository.
 
+
+
 >Project Files: The main location to place and organize the files that will be used for making the project and it's resources.
 
->Project Files>: There are no further directories in this area. Plans are to expand it with the project. Now goind up a level.
 
---- Level 1 //yes a one, the level represent how deep in the repository you are when you back out. 1 mean you are in the repositor. high numbers mean you deeper into the subfolders.
+
+>Project Files>: There are no further directories in this area. Plans are to expand it with the project. Now going up a level.
+
+
+
+--- Level 1 //yes a one, the level represent how deep in the repository you are when you back out. 1 mean you are in the repository. high numbers mean you deeper into the subfolders.
+
+
 
 >Project Organization: The main location to place work that isn't going to be used as the working part of the assignment, but a place to put resources to help us complete the project. For the most part this is planning materials.
 
->Project Organization>Physical Layout Glossator.txt: The documentation of how the repository is organized physically with descriptions as to the functionality and possible rational (The rationality of things will most likely be at a minimum because we will descuss changes using the GitHub System).
 
->Project Organization>Overall Project Ideas: This subfolder will hold both proposeals and official plans of how we actually plan to do the work. This include UML Diagrams, or scheduals.
 
->Project Organization>Overall Project Ideas>Commited: This subfolder will hold all the go to stuff of all the things we need to do, and how to do it.
+>Project Organization>Physical Layout Glossator.txt: The documentation of how the repository is organized physically with descriptions as to the functionality and possible rational (The rationality of things will most likely be at a minimum because we will discuss changes using the GitHub System).
 
->Project Organization>Overall Project Ideas>Commited>Deadlines.txt: This document covers the major dead lines. Both those for the assignment, and our own dead lines we want for our goals.
 
->Project Organization>Overall Project Ideas>Commited>Goals.txt: This document lists out all the specific goals that we want to make clear.
 
->Project Organization>Overall Project Ideas>Commited>Work Partition.txt: This document lists us out and what we need to do. This will act as a status indicator, saying whats a wip, what's complete, etc.
+>Project Organization>Overall Project Ideas: This subfolder will hold both proposals and official plans of how we actually plan to do the work. This include UML Diagrams, or schedules.
 
->Project Organization>Overall Project Ideas>Commited>: There are no further directories in this area. Plans are to expand it with the plans like UMLs that we agreed upon. Now goind up a level.
+
+
+>Project Organization>Overall Project Ideas>Committed: This subfolder will hold all the go to stuff of all the things we need to do, and how to do it.
+
+
+
+>Project Organization>Overall Project Ideas>Committed>Deadlines.txt: This document covers the major deadlines. Both those for the assignment, and our own deadlines we want for our goals.
+
+
+
+>Project Organization>Overall Project Ideas>Committed>Goals.txt: This document lists out all the specific goals that we want to make clear.
+
+
+
+>Project Organization>Overall Project Ideas>Committed>Work Partition.txt: This document lists us out and what we need to do. This will act as a status indicator, saying whats a wip, what's complete, etc.
+
+
+
+>Project Organization>Overall Project Ideas>Commited>: There are no further directories in this area. Plans are to expand it with the plans like UMLs that we agreed upon. Now going up a level.
+
+
 
 --- Level 3
 
->Project Organization>Overall Project Ideas>Proposals: This subfolder will hold folders of proposeals. In each subfolder we will place all the documents we need to when it comes to proposing a plan, such as a scan of a UML diagram.
 
->Project Organization>Overall Project Ideas>: There are no further directories in this area. I do not foresee any expantion int this area beyond this point. This is the end.
+
+>Project Organization>Overall Project Ideas>Proposals: This subfolder will hold folders of proposals. In each subfolder we will place all the documents we need to when it comes to proposing a plan, such as a scan of a UML diagram.
+
+
+
+>Project Organization>Overall Project Ideas>: There are no further directories in this area. I do not foresee any expansion of this area beyond this point. This is the end.
 
