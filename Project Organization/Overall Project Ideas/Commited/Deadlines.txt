@@ -1,0 +1,48 @@
+First Dead Line
+November 19, Before Ten AM. We must be in lab.
+The Presentation of our oporating GUI is manditory.
+
+Requirements:
+
+The buttons should be for the following:
+
+Clear
+Filled rectangle
+Filled oval
+Empty rectangle
+Empty oval
+Line Drawing
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Final Dead Line
+December 3, Before Ten AM. We must be in lab (I assume, it would at least be optimal).
+The Presentation of our oporating program/project is manditory.
+
+Requirements:
+
+Be able to change colors on your drawing objects.  Color Palette chooser. A display of current colors. Outline and fill colors. 
+JMenuBar with a File, Edit, Choices, Help pulldown menus, in Help you need a About choice that pops up a splash screen with your image logo on it. 
+A freehand drawing button so you can draw like with a pencil in current color. Ability to change stroke thickness. 
+Draw on the buttons instead of words, like the example I gave last week. 
+Be able to change the stroke size....really easy. 
+Make the buttons look good in the layout, spacing between them, same size, try to have them highlight in some way when mouse is over the button. Similar to the way my example program worked. 
+Add the ability to add text to your image.
+Re-sizing doesn't erase your image, minimize and re-sizing should not change the drawing done.   
+
+And Two or more of any of the following.
+
+Real time bounding box to show the shape about to be drawn when mouse released. I showed it in demo, I'll talk about it more.
+ Load a image and use the Paint program to draw on the image like it's a canvas, (including erasing the original image?). 
+Save your file as a .png, or .gif or .jpg or .bmp or all. 
+Don't know if this is possible.......print your image. 
+Grid display and snap to grid.
+Rotate canvas 90 degrees
+ Zoom in and out
+Undo button that will back up four levels.
+Fill with color tool
+
+((I think we can do four of them with little to no major hashle, the fill, the undo, the bounding box, and the rotate; I am familar with these))
+
+Consider this and Overall check list, we must organize to achieve these goals. 
+Add any additianal goals that feel are needed, or break down the goals and list them in the Goals.txt document.
