@@ -1,0 +1,16 @@
+Checklist
+
+Ben & Jake: 
+1 Get Organized> Status: WIP
+2 Make a game Plan> Status: Standby
+3 Partition> Status: Do As Needed.
+
+Ben:
+
+
+Jake:
+
+
+Notes:
+
+Note 1 By Ben: I have already started goal #1, I am currently making this file and repository as an example of how we could be organized about this. I studied swing and I hope that some time tomorrow I can make my first fully fleshed out UML diagram for the overall proposeal on how we could go about the actual making of the program for goal 2, after that we can devide and concer for goal 3.
