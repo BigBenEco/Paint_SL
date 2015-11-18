@@ -28,7 +28,8 @@ public class gui_Canvas extends JPanel
 		height = wHeight;
 		
 		//setBackground(Color.RED);
-		addMouseListener(new MouseComp());
+		//addMouseListener(new MouseComp());
+		addMouseMotionListener( new MouseTracker() );
 		setPreferredSize(new Dimension(wWidth, wHeight));
 		
 	}
@@ -118,11 +119,13 @@ public class gui_Canvas extends JPanel
     	     int curY = e.getY();
     	     
     	     painting =  Driver.global.painting() ; // gets a safe copy 
-    	     Graphics2D g2 = (Graphics2D)getGraphics();
+    	     Graphics2D g2 = (Graphics2D)painting.getGraphics();
     	      
     	      
 
-    	     toolBox.end(painting, curX, curY);  // pass by reference so it will alter painting and wo do not need to wory about passing values.
+    	     toolBox.hold(painting, curX, curY);  // pass by reference so it will alter painting and wo do not need to wory about passing values.
+    	     g2.setColor(Color.BLACK);
+    	     g2.drawLine(0, 0, curX, curY);
     	      
     	     paint(); //paints what things look like.
         	 
@@ -133,11 +136,13 @@ public class gui_Canvas extends JPanel
     	     int curY = e.getY();
     	     
     	     painting =  Driver.global.painting() ; // gets a safe copy 
-    	     Graphics2D g2 = (Graphics2D)getGraphics();
+    	     Graphics2D g2 = (Graphics2D)painting.getGraphics();
     	      
     	      
 
-    	     toolBox.end(painting, curX, curY);  // pass by reference so it will alter painting and wo do not need to wory about passing values.
+    	     toolBox.hold(painting, curX, curY);  // pass by reference so it will alter painting and wo do not need to wory about passing values.
+    	     g2.setColor(Color.BLACK);
+    	     g2.drawLine(0, 0, curX, curY);
     	      
     	     paint(); //paints what things look like.
          }

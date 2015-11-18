@@ -1,7 +1,9 @@
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+/*
+ * This class is a stack class that uses an array.
+ * It holds a list of Buffered images of the canvas in the past.
+ */
 
-//this makes a limited stack of however many, help lowers the memory usage of the program compared to the stack class with no limitation
 public class data_ImageBuffer {
 	
 	public int length;
@@ -16,17 +18,19 @@ public class data_ImageBuffer {
 	{
 		length = size;
 		data = new BufferedImage[length];
+		last = 0;
+		opening = 0;
 	}
 	
 	public void push(BufferedImage top)
 	{
-		isEmpty = false;
-		if(opening == last)
+		if( (opening == last) && (isEmpty == false) ) // the other constraint prevents it from moving the last since it is holding nothing, else it moves it to hold the last buffer.
 		{
-			last += ( last == (length-1) ) ? (1-length) : 1; //moves the pointer to the last data up ahead if it reaches the end
+			last += ( last == (length-1) ) ? (1-length) : 1; //moves the pointer last up one so that it can keep up with the open end.
 		}
 		data[opening] = top;
-		opening += ( opening == (length-1) ) ? (1-length) : 1;  //m
+		opening += ( opening == (length-1) ) ? (1-length) : 1;  //moves the opening now that we added data, catching up with last if possible.
+		isEmpty = false;
 	}
 
 	public BufferedImage pop() throws CanNotUndoException

@@ -26,44 +26,71 @@ public class itb_Box {
 	public void drawBounds(  BufferedImage painting, int inX, int inY,  int outlineThickness ) //A special function used when the mouse is being dragged to give a representation of the box
 	{
 		Graphics2D tool = (Graphics2D) painting.getGraphics();
-		/*now you us the tool to draw with, then you send into painting with the setGraphics() method.
-		* Note, I am not sure getting the Graphics2D object includes what ever is already been painted.
-		* but considering that everything so far has been passed by reference, and that its the raster
-		* that is passed by valued directly to the data handling, I think it will work just fine.
-		*/
 		
-		// Code Here
+		int recWidth;
+		int recHeight;
+		int temp;
 		
-		//float dash1[] = {10.0f};
-		//BasicStroke dashed = new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, dash1, 0.0f);
-		//tool.setStroke(dashed);
-		//tool.draw(new RoundRectangle2D.Double(x, y, rectWidth, rectHeight, 10, 10));
+		if (inX > startX)
+		{
+			recWidth = inX - startX; 
+		}
+		else // need to do a switch
+		{
+			temp = inX;
+			recWidth = startX - inX;
+			startX = temp;
+		}
 		
-		//make sizing parameters
-		int recWidth = inX - startX; 
-		int recHeight = inY - startY;
+		if (inY > startY)
+		{
+			recHeight = inY - startY; 
+		}
+		else // need to do a switch
+		{
+			temp = inY;
+			recHeight = startY - inY;
+			startY = temp;
+		}
+		
 		// draw the thing.
-		//tool.drawRect(startX, startY, recWidth, recHeight);
+		tool.setColor(Color.BLUE);
+		tool.drawRect(startX, startY, recWidth, recHeight);
 		
-		// End here, because since we are changing things to painting with it graphics2D object, and painting is an object itself, than we are passing everything important by reference, so no data to return.
+		
 	}
 	
 	public void finalize( BufferedImage painting, int inX, int inY,  int outlineThickness, Color cFill, Color cOutline, boolean isFilled, boolean isOutlined )  // This should provide an idea of what is needed in the final product. The ToolBox class will have these predefined as we will wait till we work on the real project to add the options menu to actually changes things.
 	{
 		Graphics2D tool = (Graphics2D) painting.getGraphics();
-		/*now you use "tool" to draw with, then you send into painting with the setGraphics() method.
-		* Note, I am not sure getting the Graphics2D object includes what ever is already been painted.
-		* but considering that everything so far has been passed by reference, and that its the raster
-		* that is passed by valued directly in the final image saving methods higher up, I think it will work just fine.
-		*/
 		
-		// Code Here
+		int recWidth;
+		int recHeight;
+		int temp;
 		
-		//make sizing parameters
-		int recWidth = inX - startX; 
-		int recHeight = inY - startY;
+		if (inX > startX)
+		{
+			recWidth = inX - startX; 
+		}
+		else // need to do a switch
+		{
+			temp = inX;
+			recWidth = startX - inX;
+			startX = temp;
+		}
+		
+		if (inY > startY)
+		{
+			recHeight = inY - startY; 
+		}
+		else // need to do a switch
+		{
+			temp = inY;
+			recHeight = startY - inY;
+			startY = temp;
+		}
+		
 		// draw the thing.
-		tool.setBackground( Color.RED );
 		tool.setColor(Color.BLUE);
 		tool.drawRect(startX, startY, recWidth, recHeight);
 		

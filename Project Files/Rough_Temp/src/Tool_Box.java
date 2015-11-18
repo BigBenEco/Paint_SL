@@ -8,9 +8,9 @@ public class Tool_Box {
 	public static enum tool { Mouse, Box, Eclipse, Line };//this is were to add names to other tools here.
 	
 	public tool myTool;
-	public boolean doingWork = false;
+	public boolean doingWork = false; // used to now if when the mouse is moving if we need to do something.
 	
-	private itb_Box BoxTool = new itb_Box();
+	private itb_Box BoxTool = new itb_Box(); // the actual tools
 	//this is were to make other tools here.
 	
 	// Drawing Parameters, will be adjustable, but for now these will be fixed to these default values.
@@ -22,7 +22,7 @@ public class Tool_Box {
 	
 	Tool_Box()
 	{
-		myTool = tool.Mouse;
+		myTool = tool.Mouse; // sets the tool to nothing.
 	}
 	
 	public void start( int startX, int startY)
