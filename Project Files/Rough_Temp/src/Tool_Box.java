@@ -5,7 +5,7 @@ import java.awt.image.Raster;
 
 public class Tool_Box {
 	
-	public static enum tool { Mouse, Box, Oval, Line, BoxF, OvalF };//this is were to add names to other tools here.
+	public static enum tool { Mouse, Box, Oval, Line };//this is were to add names to other tools here.
 	
 	public tool myTool;
 	public boolean doingWork = false; // used to now if when the mouse is moving if we need to do something.
@@ -13,8 +13,7 @@ public class Tool_Box {
 	private itb_Box  BoxTool  = new itb_Box(); // the actual tools
 	private itb_Oval OvalTool = new itb_Oval();
 	private itb_Line LineTool = new itb_Line();
-	private itb_BoxF  BoxFTool  = new itb_BoxF(); // the actual tools
-	private itb_OvalF OvalFTool = new itb_OvalF();
+
 	
 	
 	// Drawing Parameters, will be adjustable, but for now these will be fixed to these default values.
@@ -58,18 +57,6 @@ public class Tool_Box {
 			}	
 			break;
 			
-			case BoxF:
-			{
-				BoxFTool.startAt(startX, startY);  // Calls the special function for that particular tool
-			}	
-			break;
-			
-			case OvalF:
-			{
-				OvalFTool.startAt(startX, startY);  // Calls the special function for that particular tool
-			}	
-			break;
-			
 			default:
 			{
 				// Nothing to do really.
@@ -99,18 +86,7 @@ public class Tool_Box {
 					OvalTool.drawBounds(painting, endX, endY, outlineThickness);  // Calls the special function for that particular tool
 				}	
 				break;
-				
-				case BoxF:
-				{
-					BoxFTool.drawBounds(painting, endX, endY, outlineThickness);  // Calls the special function for that particular tool, and gives it all the parameters it may need, pass by reference so we do not need to return anything.
-				}	
-				break;
-				
-				case OvalF:
-				{
-					OvalFTool.drawBounds(painting, endX, endY, outlineThickness);  // Calls the special function for that particular tool
-				}	
-				break;
+
 				case Line:
 				{
 					LineTool.drawBounds(painting, endX, endY, outlineThickness);  // Calls the special function for that particular tool
@@ -146,18 +122,6 @@ public class Tool_Box {
 				case Oval:
 				{
 					OvalTool.finalize( painting, endX, endY, outlineThickness, cFilling, cOutline, isFilled, isOutlined );  // Calls the special function for that particular tool
-				}	
-				break;
-				
-				case BoxF:
-				{
-					BoxFTool.finalize( painting, endX, endY, outlineThickness, cFilling, cOutline, isFilled, isOutlined );  // Calls the special function for that particular tool, and gives it all the parameters it may need, pass by reference so we do not need to return anything.
-				}	
-				break;
-				
-				case OvalF:
-				{
-					OvalFTool.finalize( painting, endX, endY, outlineThickness, cFilling, cOutline, isFilled, isOutlined );  // Calls the special function for that particular tool
 				}	
 				break;
 				

@@ -24,7 +24,7 @@ public class gui_WindowLayout extends JFrame
     gui_WindowLayout ( int width, int height)
     {
     	super("Paint SL");
-        setSize(width, height);
+        setSize( width, height);
         
         contents = getContentPane();
         //addMouseMotionListener(new MouseTracker());
@@ -36,15 +36,15 @@ public class gui_WindowLayout extends JFrame
     	contents.add(toolBar, BorderLayout.WEST);
     	//canvas.setLocation(0, 0);
     }
-    /*
-    getInstance()
+    
+    public gui_WindowLayout getInstance( int width, int height)
     {
     	if( current == null )
     	{
-    		current = new gui_WindowLayout();
+    		current = new gui_WindowLayout( width, height);
     	}
     	return current;
-    }*/
+    }
 
     public void run()
     {
