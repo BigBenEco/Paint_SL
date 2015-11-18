@@ -10,25 +10,38 @@ import javax.swing.*;
 public class gui_ToolBarLayout extends JPanel {
 	
 	gui_Canvas canvas;
+	ButtonListener ear;
+	JCheckBox fill;
 
 	gui_ToolBarLayout ( gui_Canvas canvus)
 	{
 		this.canvas = canvus;
+		ear = new ButtonListener();
 		
 		setLayout( new BorderLayout( 5, 5 ) ); // 5 pixel gaps
 		
 		JButton box = new JButton("Box");
+		JButton oval = new JButton("Oval");
+		JButton line = new JButton("Line");
+		
+		JCheckBox fill = new JCheckBox("Filled");
+		
 		JButton undo = new JButton("Undo");
 	    JButton clear = new JButton("Clear");
 	    
-	    box.addActionListener(new ButtonListener());
-	    undo.addActionListener(new ButtonListener());
-	    clear.addActionListener(new ButtonListener());
+	    box.addActionListener(ear);
+	    oval.addActionListener(ear);
+	    line.addActionListener(ear);
+	    undo.addActionListener(ear);
+	    clear.addActionListener(ear);
 	    
 	    setLayout(new GridLayout(7, 1));
 	    
-	    setBackground(Color.RED);
+	    setBackground(Color.darkGray);
 		add(box);
+		add(oval);
+		add(line);
+		add(fill);
 		add(undo);
 		add(clear);
 		
@@ -50,6 +63,15 @@ public class gui_ToolBarLayout extends JPanel {
 	       if(command.equals("Box"))
 	       {
 	    	   canvas.toolBox.myTool = Tool_Box.tool.Box;
+	       }
+	       else if(command.equals("Oval"))
+	       {
+	    	   canvas.toolBox.myTool = Tool_Box.tool.Oval;
+	       }
+	       else if(command.equals("Line"))
+	       {
+	    	   canvas.toolBox.myTool = Tool_Box.tool.Line;
+	    	   
 	       }
 	       else if(command.equals("Undo"))
 	       {
