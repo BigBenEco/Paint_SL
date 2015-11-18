@@ -24,13 +24,19 @@ public class gui_ToolBarLayout extends JPanel {
 		JButton oval = new JButton("Oval");
 		JButton line = new JButton("Line");
 		
-		JCheckBox fill = new JCheckBox("Filled");
+		JButton boxf = new JButton("Box Fill");
+		JButton ovalf = new JButton("Oval Fill");
+
 		
 		JButton undo = new JButton("Undo");
 	    JButton clear = new JButton("Clear");
 	    
 	    box.addActionListener(ear);
 	    oval.addActionListener(ear);
+	    
+	    boxf.addActionListener(ear);
+	    ovalf.addActionListener(ear);
+	    
 	    line.addActionListener(ear);
 	    undo.addActionListener(ear);
 	    clear.addActionListener(ear);
@@ -39,9 +45,11 @@ public class gui_ToolBarLayout extends JPanel {
 	    
 	    setBackground(Color.darkGray);
 		add(box);
+		add(boxf);
 		add(oval);
+		add(ovalf);
 		add(line);
-		add(fill);
+		
 		add(undo);
 		add(clear);
 		
@@ -72,6 +80,14 @@ public class gui_ToolBarLayout extends JPanel {
 	       {
 	    	   canvas.toolBox.myTool = Tool_Box.tool.Line;
 	    	   
+	       }
+	       else if(command.equals("Box Fill"))
+	       {
+	    	   canvas.toolBox.myTool = Tool_Box.tool.BoxF;
+	       }
+	       else if(command.equals("Oval Fill"))
+	       {
+	    	   canvas.toolBox.myTool = Tool_Box.tool.OvalF;
 	       }
 	       else if(command.equals("Undo"))
 	       {

@@ -12,6 +12,7 @@ import java.awt.event.MouseMotionListener;
 
 public class gui_WindowLayout extends JFrame 
 {
+	public gui_WindowLayout current;
 
 	public Container contents;
 	public gui_Canvas canvas;
@@ -35,6 +36,15 @@ public class gui_WindowLayout extends JFrame
     	contents.add(toolBar, BorderLayout.WEST);
     	//canvas.setLocation(0, 0);
     }
+    /*
+    getInstance()
+    {
+    	if( current == null )
+    	{
+    		current = new gui_WindowLayout();
+    	}
+    	return current;
+    }*/
 
     public void run()
     {
