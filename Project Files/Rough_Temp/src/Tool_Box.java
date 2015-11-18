@@ -10,8 +10,10 @@ public class Tool_Box {
 	public tool myTool;
 	public boolean doingWork = false; // used to now if when the mouse is moving if we need to do something.
 	
-	private itb_Box BoxTool = new itb_Box(); // the actual tools
-	//this is were to make other tools here.
+	private itb_Box  BoxTool  = new itb_Box(); // the actual tools
+	private itb_Oval OvalTool = new itb_Oval();
+	private itb_Line LineTool = new itb_Line();
+	
 	
 	// Drawing Parameters, will be adjustable, but for now these will be fixed to these default values.
 	public int outlineThickness = 1;
@@ -42,7 +44,17 @@ public class Tool_Box {
 			}	
 			break;
 			
-			//this is were to add the calls to other tools here.
+			case Oval:
+			{
+				OvalTool.startAt(startX, startY);  // Calls the special function for that particular tool
+			}	
+			break;
+			
+			case Line:
+			{
+				LineTool.startAt(startX, startY);  // Calls the special function for that particular tool
+			}	
+			break;
 			
 			default:
 			{
@@ -68,7 +80,17 @@ public class Tool_Box {
 				}	
 				break;
 				
-				//this is were to add the calls to other tools here.
+				case Oval:
+				{
+					OvalTool.drawBounds(painting, endX, endY, outlineThickness);  // Calls the special function for that particular tool
+				}	
+				break;
+				
+				case Line:
+				{
+					LineTool.drawBounds(painting, endX, endY, outlineThickness);  // Calls the special function for that particular tool
+				}	
+				break;
 				
 				default:
 				{
@@ -96,7 +118,17 @@ public class Tool_Box {
 				}	
 				break;
 				
-				//this is were to add the calls to other tools here.
+				case Oval:
+				{
+					OvalTool.finalize( painting, endX, endY, outlineThickness, cFilling, cOutline, isFilled, isOutlined );  // Calls the special function for that particular tool
+				}	
+				break;
+				
+				case Line:
+				{
+					LineTool.finalize( painting, endX, endY, outlineThickness, cFilling, cOutline, isFilled, isOutlined );  // Calls the special function for that particular tool
+				}	
+				break;
 				
 				default:
 				{
