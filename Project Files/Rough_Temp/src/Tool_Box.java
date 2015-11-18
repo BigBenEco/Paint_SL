@@ -53,26 +53,28 @@ public class Tool_Box {
 	
 	public void hold( BufferedImage painting, int endX, int endY)
 	{
-		switch(myTool)
-		{
-			case Mouse:
+		if(doingWork){
+			switch(myTool)
 			{
-				// Nothing to do really.
-			}	
-			break;
-			
-			case Box:
-			{
-				BoxTool.drawBounds(painting, endX, endY, outlineThickness);  // Calls the special function for that particular tool, and gives it all the parameters it may need, pass by reference so we do not need to return anything.
-			}	
-			break;
-			
-			//this is were to add the calls to other tools here.
-			
-			default:
-			{
-				// Nothing to do really.
-			}	
+				case Mouse:
+				{
+					// Nothing to do really.
+				}	
+				break;
+				
+				case Box:
+				{
+					BoxTool.drawBounds(painting, endX, endY, outlineThickness);  // Calls the special function for that particular tool, and gives it all the parameters it may need, pass by reference so we do not need to return anything.
+				}	
+				break;
+				
+				//this is were to add the calls to other tools here.
+				
+				default:
+				{
+					// Nothing to do really.
+				}	
+			}
 		}
 	}
 	

@@ -29,33 +29,34 @@ public class itb_Box {
 		
 		int recWidth;
 		int recHeight;
-		int temp;
+		int tempX;
+		int tempY;
 		
 		if (inX > startX)
 		{
 			recWidth = inX - startX; 
+			tempX = startX;
 		}
 		else // need to do a switch
 		{
-			temp = inX;
+			tempX = inX;
 			recWidth = startX - inX;
-			startX = temp;
 		}
 		
 		if (inY > startY)
 		{
 			recHeight = inY - startY; 
+			tempY = startY;
 		}
 		else // need to do a switch
 		{
-			temp = inY;
+			tempY = inY;
 			recHeight = startY - inY;
-			startY = temp;
 		}
 		
 		// draw the thing.
 		tool.setColor(Color.BLUE);
-		tool.drawRect(startX, startY, recWidth, recHeight);
+		tool.drawRect(tempX, tempY, recWidth, recHeight);
 		
 		
 	}

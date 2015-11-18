@@ -8,6 +8,7 @@ public class Driver
 	{	
 		global = new Program_Data();
 		global.buildGUI();
+		//System.out.println("Test"); // update will yah?
 		global.run();
 	}
 }

@@ -8,7 +8,7 @@ public class data_ImageBuffer {
 	
 	public int length;
 	
-	private int last, opening; // pointers to the ends of the arrays.
+	private int last, first; // pointers to the ends of the arrays.
 	
 	private BufferedImage data[];
 	
@@ -19,31 +19,56 @@ public class data_ImageBuffer {
 		length = size;
 		data = new BufferedImage[length];
 		last = 0;
-		opening = 0;
+		first = 0;
 	}
 	
 	public void push(BufferedImage top)
 	{
-		if( (opening == last) && (isEmpty == false) ) // the other constraint prevents it from moving the last since it is holding nothing, else it moves it to hold the last buffer.
+		//System.out.println("Push activated; last = "+last+", first = "+first+", length = "+length+".");
+		if(isEmpty)
 		{
-			last += ( last == (length-1) ) ? (1-length) : 1; //moves the pointer last up one so that it can keep up with the open end.
+			data[last] = top; // fills last, which is also first, but does not move last yet.
+			isEmpty = false;
+			//System.out.println("Was Empty.");
 		}
-		data[opening] = top;
-		opening += ( opening == (length-1) ) ? (1-length) : 1;  //moves the opening now that we added data, catching up with last if possible.
-		isEmpty = false;
+		else
+		{
+			last = (last+1)%length; // advances the pointer last
+			//System.out.println("Advanced last to "+last+".");
+			if(last == first)
+			{
+				first = (first+1)%length; // if first is in the way, we need to advance it as well.
+				//System.out.println("last caught up with first, first now advanced to "+first+".");
+			}
+			data[last] = top; // adds the data;
+		}
 	}
 
 	public BufferedImage pop() throws CanNotUndoException
 	{
+		//System.out.println("Pop activated; last = "+last+", first = "+first+", length = "+length+".");
 		if(isEmpty)
 		{
+			//System.out.println("Is Empty.");
 			throw new CanNotUndoException();
 		}
 		else
 		{
-			opening += ( opening == 0) ? length-1 : (0-1); 
-			isEmpty = (opening == last) ? true : false;  //checks to see if empty now. We know if it is because we just took one thing off the stack, and if moving the pointer to the new spot is the same spot as the last pointer, than we know we cleared the last of the data.
-			return data[opening];
+			//System.out.println("Is Not Empty.");
+			if( last == first)
+			{
+				isEmpty = true;
+				//System.out.println("Now Empty.");
+			    return data[last];
+			}
+			else
+			{
+				//System.out.println("Not Empty yet. Last at "+last+".");
+				BufferedImage temp = data[last]; // going to save the data to be sent.
+				last = ( last == 0 ) ? length-1 : last - 1; // now we retreat the pointer last backwards
+				//System.out.println("Retreated last to "+last+".");
+				return temp;
+			}
 		}
 	}
 }

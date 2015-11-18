@@ -38,6 +38,7 @@ public class gui_WindowLayout extends JFrame
 
     public void run()
     {
+    	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	setExtendedState(JFrame.MAXIMIZED_BOTH);
     	setVisible( true );
     	
