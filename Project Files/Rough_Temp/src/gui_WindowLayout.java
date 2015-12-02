@@ -109,7 +109,7 @@ public class gui_WindowLayout extends JFrame implements ActionListener
 		 // Adds an item to the current menu
         menuItem = new JMenuItem("Line Tool", KeyEvent.VK_T);
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(
-		KeyEvent.VK_1, ActionEvent.CTRL_MASK));
+		KeyEvent.VK_L, ActionEvent.CTRL_MASK));
 		menuItem.addActionListener(this);
 		submenu.add(menuItem);
 		
