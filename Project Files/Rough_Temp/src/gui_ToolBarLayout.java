@@ -9,6 +9,7 @@ import javax.swing.*;
 
 public class gui_ToolBarLayout extends JPanel {
 	
+	gui_ToolBarLayout current;
 	gui_Canvas canvas;
 	ButtonListener ear;
 	JCheckBox fill;
@@ -23,19 +24,13 @@ public class gui_ToolBarLayout extends JPanel {
 		JButton box = new JButton("Box");
 		JButton oval = new JButton("Oval");
 		JButton line = new JButton("Line");
-		
-		JButton boxf = new JButton("Box Fill");
-		JButton ovalf = new JButton("Oval Fill");
 
-		
+
 		JButton undo = new JButton("Undo");
 	    JButton clear = new JButton("Clear");
 	    
 	    box.addActionListener(ear);
 	    oval.addActionListener(ear);
-	    
-	    boxf.addActionListener(ear);
-	    ovalf.addActionListener(ear);
 	    
 	    line.addActionListener(ear);
 	    undo.addActionListener(ear);
@@ -45,9 +40,7 @@ public class gui_ToolBarLayout extends JPanel {
 	    
 	    setBackground(Color.darkGray);
 		add(box);
-		add(boxf);
 		add(oval);
-		add(ovalf);
 		add(line);
 		
 		add(undo);
@@ -60,6 +53,15 @@ public class gui_ToolBarLayout extends JPanel {
                                                 1,1,2,2,Color.black),
                                 BorderFactory.createEmptyBorder(5,5,5,5)));//*/
 	    
+	}
+	
+	public gui_ToolBarLayout getInstantce( gui_Canvas canvus)
+	{
+		if (current == null )
+		{
+			current = new gui_ToolBarLayout(canvas);
+		}
+		return current;
 	}
 	
 	private class ButtonListener implements ActionListener
@@ -81,14 +83,7 @@ public class gui_ToolBarLayout extends JPanel {
 	    	   canvas.toolBox.myTool = Tool_Box.tool.Line;
 	    	   
 	       }
-	       else if(command.equals("Box Fill"))
-	       {
-	    	   canvas.toolBox.myTool = Tool_Box.tool.BoxF;
-	       }
-	       else if(command.equals("Oval Fill"))
-	       {
-	    	   canvas.toolBox.myTool = Tool_Box.tool.OvalF;
-	       }
+
 	       else if(command.equals("Undo"))
 	       {
 	    	   Driver.global.undo();

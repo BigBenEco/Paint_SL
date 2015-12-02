@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 public class gui_Canvas extends JPanel
 {
-	
+	public gui_Canvas current;
 	public int wWidth, wHeight, width, height;
 	public Tool_Box toolBox = new Tool_Box();
 	private BufferedImage painting;
@@ -32,6 +32,15 @@ public class gui_Canvas extends JPanel
 		addMouseMotionListener( new MouseTracker() );
 		setPreferredSize(new Dimension(wWidth, wHeight));
 		
+	}
+	
+	public gui_Canvas getInstantce( int wWidth, int wHeight)
+	{
+		if (current == null )
+		{
+			current = new gui_Canvas(wWidth, wHeight);
+		}
+		return current;
 	}
 	
 	public void clear()
