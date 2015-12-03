@@ -4,8 +4,13 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import javafx.scene.image.Image;
 
 public class gui_ToolBarLayout extends JPanel {
 
@@ -20,9 +25,13 @@ public class gui_ToolBarLayout extends JPanel {
 
 		setLayout( new BorderLayout( 5, 5 ) ); // 5 pixel gaps
 
-                fill = new JCheckBox("Fill?");
-		JButton box = new JButton("Box"); //Create buttons
-		JButton oval = new JButton("Oval");
+
+        fill = new JCheckBox("Fill?");
+        
+        Icon img_box = new ImageIcon("box 64.png");
+		JButton box = new JButton(img_box); //Create buttons
+		Icon img_oval = new ImageIcon("oval 64.png");
+		JButton oval = new JButton(img_oval);
 		JButton line = new JButton("Line");
 		JButton undo = new JButton("Undo");
                 JButton clear = new JButton("Clear");
@@ -34,6 +43,7 @@ public class gui_ToolBarLayout extends JPanel {
                 undo.addActionListener(ear);
                 clear.addActionListener(ear);
                 fill.addActionListener(ear);
+
 
                 setLayout(new GridLayout(7, 1));
 

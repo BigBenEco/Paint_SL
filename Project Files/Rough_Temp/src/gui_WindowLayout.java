@@ -19,6 +19,11 @@ import java.awt.event.MouseMotionListener;
 
 public class gui_WindowLayout extends JFrame implements ActionListener
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public gui_WindowLayout current;
 
 	public Container contents;
@@ -163,11 +168,6 @@ public class gui_WindowLayout extends JFrame implements ActionListener
 		menu.addSeparator();
 		
 		
-		 // Adds an item to the current menu
-        menuItem = new JMenuItem("9", KeyEvent.VK_T);
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(
-		KeyEvent.VK_1, ActionEvent.ALT_MASK));
-		menu.add(menuItem);
 		
 	 
      // Final Forth Menu Option: Help
@@ -180,6 +180,7 @@ public class gui_WindowLayout extends JFrame implements ActionListener
         menuItem = new JMenuItem("About", KeyEvent.VK_Q);
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(
 		KeyEvent.VK_Q, ActionEvent.ALT_MASK));
+		menuItem.addActionListener(this);
 		menu.add(menuItem);
 		
 		
@@ -213,7 +214,7 @@ public class gui_WindowLayout extends JFrame implements ActionListener
     	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	setExtendedState(JFrame.MAXIMIZED_BOTH);
     	setVisible( true );
-    	
+    	canvas.clear();
     }
     
     public class MouseComp implements MouseListener
@@ -285,6 +286,13 @@ public class gui_WindowLayout extends JFrame implements ActionListener
 	    	   //canvas.toolBox.myTool = Tool_Box.tool.Mouse;
 	    	   canvas.clear();
 	       }
+	       else if(command.equals("About"))
+	       {
+	    	   //canvas.toolBox.myTool = Tool_Box.tool.Mouse;
+	    	   gui_About about = new gui_About();
+	    	   about.setVisible(true);
+	       }
     }
+    
 }
 

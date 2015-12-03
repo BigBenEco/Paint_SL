@@ -30,11 +30,12 @@ public class Program_Data {
 		currentPainting = new BufferedImage(programWindow.canvas.width,programWindow.canvas.height, BufferedImage.TYPE_INT_RGB);
 		Graphics2D g2 = (Graphics2D)currentPainting.getGraphics();
 		g2.setColor( Color.white );
-        	g2.fillRect(0, 0, width, height);
+        g2.fillRect(0, 0, width, height);
 	}
 	
 	public void run()
 	{
+		
 		programWindow.run();
 	}
 	
