@@ -3,7 +3,6 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
-import java.awt.image.Raster;
 
 public class Program_Data {
 
@@ -17,11 +16,11 @@ public class Program_Data {
 	
 	Program_Data()
 	{
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    	width = (int) screenSize.getWidth();
-    	height = (int) screenSize.getHeight();
-    	
-    	imageBuffer = new data_ImageBuffer(5); //thats all that's needed to be noticeable for the score of the undo feature.
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            width = (int) screenSize.getWidth();
+            height = (int) screenSize.getHeight();
+
+            imageBuffer = new data_ImageBuffer(5); //thats all that's needed to be noticeable for the score of the undo feature.
     	
  	}
 	
@@ -31,7 +30,7 @@ public class Program_Data {
 		currentPainting = new BufferedImage(programWindow.canvas.width,programWindow.canvas.height, BufferedImage.TYPE_INT_RGB);
 		Graphics2D g2 = (Graphics2D)currentPainting.getGraphics();
 		g2.setColor( Color.white );
-    	g2.fillRect(0, 0, width, height);
+        	g2.fillRect(0, 0, width, height);
 	}
 	
 	public void run()
@@ -41,14 +40,18 @@ public class Program_Data {
 	
 	public void log(BufferedImage newFrame)
 	{
-		imageBuffer.push(currentPainting); //currently I do not think this will work, I think it is passing by reference, but I want to pass by value, so I need to some how generate new images, but I don't see any method to get the raw images, so maybe this will work, but it gives you the idea atleast.
+		imageBuffer.push(currentPainting); /*currently I do not think this will work, I 
+		think it is passing by reference, but I want to pass by value, so I need to 
+		some how generate new images, but I don't see any method to get the raw images, 
+		so maybe this will work, but it gives you the idea at least.*/
 		currentPainting = newFrame; //changes out the object and it's data.
 	}
 	
 	public BufferedImage painting()
 	{
-		//BufferedImage cool; this may be of some use to me as this is were I am going to no
-	     //Graphics2D painting = (Graphics2D)getGraphics();
+		/*BufferedImage cool; this may be of some use to me as this is were I am going 
+		 * to no
+	     *///Graphics2D painting = (Graphics2D)getGraphics();
 		BufferedImage painting = new BufferedImage(programWindow.canvas.width,programWindow.canvas.height, BufferedImage.TYPE_INT_RGB);
 		painting.createGraphics();
 		//painting.setData( currentPainting.getData() );  //this is the pass by value that I am hoping makes a copy of the current image so that it is safe to mess with in the canvas class.
