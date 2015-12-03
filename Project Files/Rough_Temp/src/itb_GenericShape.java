@@ -16,8 +16,8 @@ public class itb_GenericShape {
         public enum T_TYPES { LINE, BOX, BOXFILL, OVAL, OVALFILL }; //ENUM for the tool types. These let us know what tool to draw with.
         
 	public T_TYPES toolType; //An object to hold the type of tool.
-	private Color toolColor;
-        private Color outlineColor;
+	public Color toolColor;
+        public Color outlineColor;
         private boolean fillState = false;
 	
         private void setState (boolean newState)
