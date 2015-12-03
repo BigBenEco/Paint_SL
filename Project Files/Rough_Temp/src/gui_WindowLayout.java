@@ -19,6 +19,11 @@ import java.awt.event.MouseMotionListener;
 
 public class gui_WindowLayout extends JFrame implements ActionListener
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public gui_WindowLayout current;
 
 	public Container contents;
@@ -163,11 +168,6 @@ public class gui_WindowLayout extends JFrame implements ActionListener
 		menu.addSeparator();
 		
 		
-		 // Adds an item to the current menu
-        menuItem = new JMenuItem("9", KeyEvent.VK_T);
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(
-		KeyEvent.VK_1, ActionEvent.ALT_MASK));
-		menu.add(menuItem);
 		
 	 
      // Final Forth Menu Option: Help
@@ -180,6 +180,7 @@ public class gui_WindowLayout extends JFrame implements ActionListener
         menuItem = new JMenuItem("About", KeyEvent.VK_Q);
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(
 		KeyEvent.VK_Q, ActionEvent.ALT_MASK));
+		menuItem.addActionListener(this);
 		menu.add(menuItem);
 		
 		
@@ -213,14 +214,14 @@ public class gui_WindowLayout extends JFrame implements ActionListener
     	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	setExtendedState(JFrame.MAXIMIZED_BOTH);
     	setVisible( true );
-    	
+    	canvas.clear();
     }
     
     public class MouseComp implements MouseListener
 	{
         
            public void mousePressed(MouseEvent e) {
-                  System.out.println("mouse at "+e.getX()+" and "+e.getY() );
+                  //System.out.println("mouse at "+e.getX()+" and "+e.getY() );
            }
         
 	   public void mouseClicked(MouseEvent e) {}
@@ -237,7 +238,7 @@ public class gui_WindowLayout extends JFrame implements ActionListener
     	
           
          public void mouseMoved(MouseEvent e) {
-             if(e.getX() < 20)
+          /*   if(e.getX() < 20)
              {
                  System.out.println("mouse at "+e.getX()+" and "+e.getY() );
                  toolBar.setSize(29, 29);
@@ -246,7 +247,7 @@ public class gui_WindowLayout extends JFrame implements ActionListener
              else{
                  toolBar.setSize(293, 293); 
                  toolBar.repaint();
-             }
+             }*/
          }
           
          public void mouseDragged(MouseEvent e) {
@@ -285,6 +286,12 @@ public class gui_WindowLayout extends JFrame implements ActionListener
 	    	   //canvas.toolBox.myTool = Tool_Box.tool.Mouse;
 	    	   canvas.clear();
 	       }
+	       else if(command.equals("About"))
+	       {
+	    	   //canvas.toolBox.myTool = Tool_Box.tool.Mouse;
+	    	   gui_About about = new gui_About();
+	       }
     }
+    
 }
 
