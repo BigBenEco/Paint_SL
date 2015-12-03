@@ -25,8 +25,11 @@ public class gui_ToolBarLayout extends JPanel {
 	
 	public JColorChooser picker_f;
 	public JColorChooser picker_o;
+	public JSlider strokeSizer;
 	public CCA filler_changer;
 	public CCB outline_changer;
+	public CCC stroke_reader;
+	
 
 	gui_ToolBarLayout ( gui_Canvas canvus)
 	{
@@ -157,7 +160,11 @@ public class gui_ToolBarLayout extends JPanel {
         	JLabel slider = new JLabel("Stroke Size");
         	slider.setAlignmentX(CENTER_ALIGNMENT);
             
-            JSlider strokeSizer = new JSlider(JSlider.HORIZONTAL, 1, 128, 32);
+        	stroke_reader = new CCC();
+        	
+            strokeSizer = new JSlider(JSlider.HORIZONTAL, 1, 128, 32);
+            strokeSizer.addChangeListener(stroke_reader);
+            strokeSizer.setSnapToTicks(true);
             strokeSizer.setMajorTickSpacing(32);
             strokeSizer.setMinorTickSpacing(4);
             strokeSizer.setPaintTicks(true);
@@ -232,6 +239,7 @@ public class gui_ToolBarLayout extends JPanel {
 	    	   Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	           ello.setLocation(50, screenSize.height - 400);
 	           picker_f.getSelectionModel().addChangeListener( filler_changer);
+	           picker_f.setColor(canvas.toolBox.genericTool.toolColor);
 	       }
 	       else if(command.equals("Stroke"))
            {
@@ -242,7 +250,8 @@ public class gui_ToolBarLayout extends JPanel {
 	    	   elloo.pack();
 	    	   Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	           elloo.setLocation(50, screenSize.height - 400);
-	           picker_o.getSelectionModel().addChangeListener( filler_changer);
+	           picker_o.getSelectionModel().addChangeListener( outline_changer);
+	           picker_o.setColor(canvas.toolBox.genericTool.outlineColor);
            }
 
              
@@ -256,8 +265,8 @@ public class gui_ToolBarLayout extends JPanel {
 		public void stateChanged(ChangeEvent e) {
 			// TODO Auto-generated method stub
 			Color der = picker_f.getColor();
-			canvas.toolBox.genericTool.toolColor = der;
-			Driver.global.programWindow.toolBar.setBackground(der);
+			canvas.toolBox.genericTool.setColor(der);
+			//Driver.global.programWindow.toolBar.setBackground(der);
 		}
 		
 	}
@@ -268,7 +277,18 @@ public class gui_ToolBarLayout extends JPanel {
 		
 		public void stateChanged(ChangeEvent e) {
 			// TODO Auto-generated method stub
-			canvas.toolBox.genericTool.outlineColor = (picker_o.getColor());
+			canvas.toolBox.genericTool.setOutlineColor( picker_o.getColor() );
+		}
+		
+	}
+	
+	private class CCC implements ChangeListener
+	{
+
+		
+		public void stateChanged(ChangeEvent e) {
+			// TODO Auto-generated method stub
+			canvas.toolBox.genericTool.setOutline(strokeSizer.getValue());
 		}
 		
 	}

@@ -1,6 +1,8 @@
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Paint;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 
@@ -19,14 +21,19 @@ public class itb_GenericShape {
 	public Color toolColor;
         public Color outlineColor;
         private boolean fillState = false;
+        private int outline = 1;
 	
         private void setState (boolean newState)
         {
             /*Sets the tool based on the state passed to it.*/
             if(this.toolType == T_TYPES.BOX && newState == true ) {
                 toolType = T_TYPES.BOXFILL;
+            } else if(this.toolType == T_TYPES.BOXFILL&& newState == false ) {
+                toolType = T_TYPES.BOX;
             } else if(this.toolType == T_TYPES.OVAL&& newState == true ) {
                 toolType = T_TYPES.OVALFILL;
+            } else if(this.toolType == T_TYPES.OVALFILL&& newState == false ) {
+                toolType = T_TYPES.OVAL;
             } else { //If not to be filled OR is a LINE, we can set the tool directly
                 this.fillState = newState;
               }
@@ -49,8 +56,11 @@ public class itb_GenericShape {
 	public void setColor (Color newColor) {
 		this.toolColor = newColor;
 	}
-        public void setOutlineColor (Color newColor) {
+    public void setOutlineColor (Color newColor) {
 		this.outlineColor = newColor;
+	}
+    public void setOutline (int size) {
+		this.outline = size;
 	}
 	public void setTool (T_TYPES newType) {
               this.toolType = newType;
@@ -58,9 +68,13 @@ public class itb_GenericShape {
 	}
 	
 	
-	public void drawBounds(  BufferedImage painting, int currentX, int currentY,  int outlineThickness) //A special function used when the mouse is being dragged to give a representation of the box
+	public void drawBounds(  BufferedImage painting, int currentX, int currentY) //A special function used when the mouse is being dragged to give a representation of the box
 	{
 		Graphics2D tool = (Graphics2D) painting.getGraphics();
+		
+		BasicStroke stroke = new BasicStroke( outline );
+		BasicStroke na = new BasicStroke(0);
+		
                
                 localFillBox = Driver.global.programWindow.toolBar.fill;
                 
@@ -93,37 +107,42 @@ public class itb_GenericShape {
 			recHeight = point1Y - currentY;
                 }
                 
-		tool.setColor(this.toolColor);
+		
                 
                 switch(this.toolType) {
 		
                     case LINE:
+                    	    tool.setColor(outlineColor);
+                    	    tool.setStroke(stroke);
                             tool.drawLine(point1X, point1Y, currentX, currentY);
                             break;
                     case BOX:
+                    		tool.setColor(outlineColor);
+                    		tool.setStroke(stroke);
                             tool.drawRect(tempX, tempY, recWidth, recHeight);
                             break;
                     case OVAL:
+                    	 	tool.setColor(outlineColor);
+                    	 	tool.setStroke(stroke);
                             tool.drawOval(tempX, tempY, recWidth, recHeight);
                             break;
                     case BOXFILL:
-                            tool.setColor(this.outlineColor); //Set the color TEMPORARILY to create a border!
-
-                            tool.fillRect(tempX, tempY, recWidth, recHeight); //Draw the border shape!
-                            tool.setColor(this.toolColor); //Set the inside color to draw over the top of the corder
-
-                            tool.fillRect (tempX + outlineThickness,tempY + outlineThickness,
-                                     recWidth - (outlineThickness * 2), recHeight - (outlineThickness * 2) );//FILL the INSIDE shape!
+                            tool.setColor(toolColor);
+                            tool.setStroke(na);
+                            tool.fillRect(tempX, tempY, recWidth, recHeight);
+                            
+                            tool.setColor(outlineColor);
+                            tool.setStroke(stroke);
+                            tool.drawRect(tempX, tempY, recWidth, recHeight);
                             break;
                     case OVALFILL:
-                            tool.setColor(this.outlineColor);
-
-                            tool.fillOval(tempX, tempY, recWidth, recHeight); 
-
-                            tool.setColor(this.toolColor);
-
-                            tool.fillOval(tempX + outlineThickness,tempY + outlineThickness,
-                                    recWidth - (outlineThickness * 2), recHeight - (outlineThickness * 2) );
+	                    	tool.setColor(toolColor);
+	                        tool.setStroke(na);
+	                        tool.fillOval(tempX, tempY, recWidth, recHeight);
+	                        
+	                        tool.setColor(outlineColor);
+	                        tool.setStroke(stroke);
+	                        tool.drawOval(tempX, tempY, recWidth, recHeight);
                             break;
 
                             default: 
