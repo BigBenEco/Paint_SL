@@ -13,12 +13,10 @@ import javax.swing.JPanel;
 
 public class gui_Canvas extends JPanel
 {
-	public gui_Canvas current;
+	
 	public int wWidth, wHeight, width, height;
 	public Tool_Box toolBox = new Tool_Box();
 	private BufferedImage painting;
-	
-	
 	
 	gui_Canvas( int wWidth, int wHeight)
 	{
@@ -32,15 +30,6 @@ public class gui_Canvas extends JPanel
 		addMouseMotionListener( new MouseTracker() );
 		setPreferredSize(new Dimension(wWidth, wHeight));
 		
-	}
-	
-	public gui_Canvas getInstantce( int wWidth, int wHeight)
-	{
-		if (current == null )
-		{
-			current = new gui_Canvas(wWidth, wHeight);
-		}
-		return current;
 	}
 	
 	public void clear()
@@ -72,66 +61,55 @@ public class gui_Canvas extends JPanel
     	Graphics2D g2 = (Graphics2D)getGraphics();
     	super.paintComponent(g2);
     	g2.drawImage(painting, 0, 0, null);
-    	//g2.drawImage(painting, null, 0, 0);
+    	//g2.drawImage(painting, null, 0, 0);   //Delete this line Ben, or no? What does it do? What is its purpose?
         //super.paintComponent(g2); //seems to refresh things
     }
     
     public void refresh()
     {
-    	painting =  Driver.global.painting() ; // gets a safe copy 
+            painting =  Driver.global.painting() ; // gets a safe copy 
 	    Graphics2D g2 = (Graphics2D)getGraphics();
 	    super.paintComponent(g2);
-    	g2.drawImage(painting, 0, 0, null);
+            g2.drawImage(painting, 0, 0, null);
     }
     
     public class MouseComp implements MouseListener
-	{
-	   public void mouseClicked(MouseEvent e) {}
-       public void mouseEntered(MouseEvent e) {}    
-       public void mousePressed(MouseEvent e) 
-       {
-          int startX = e.getX();
-	      int startY = e.getY();
-	      toolBox.start(startX, startY);
-	      
-	   }
+    {
+            public void mouseExited(MouseEvent evt){}
+	    public void mouseClicked(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {}    
+            public void mousePressed(MouseEvent e) {
+                int startX = e.getX();
+                int startY = e.getY();
+                toolBox.onMouseDown(startX, startY);
+            }
 	   
-       public void mouseReleased(MouseEvent e){
-    	  int endX = e.getX();
- 	      int endY = e.getY();
- 	      
- 	      
- 	      
- 	      painting =  Driver.global.painting() ; // gets a safe copy 
- 	      Graphics2D g2 = (Graphics2D)getGraphics();
- 	      
- 	      
+              public void mouseReleased(MouseEvent e) {
+                int endX = e.getX();
+                int endY = e.getY();
 
- 	      toolBox.end(painting, endX, endY);  // pass by reference so it will alter painting and wo do not need to wory about passing values.
- 	      
- 	     paint(); //paints what things look like.
- 	      
- 	      Driver.global.log(painting);
- 	      //paint();//displays what is going on
- 	      
-       } 
-       public void mouseExited(MouseEvent evt){}
-	}
-    
+                painting =  Driver.global.painting() ; // gets a safe copy 
+                Graphics2D g2 = (Graphics2D)getGraphics();
+
+                toolBox.onMouseRelease(painting, endX, endY);  // pass by reference so it will alter painting and wo do not need to wory about passing values.
+
+                paint(); //paints what things look like.
+
+                Driver.global.log(painting);
+                //paint();//displays what is going on
+
+              } 
+   
+    }
     public class MouseTracker implements MouseMotionListener
     {
     	
           
          public void mouseMoved(MouseEvent e) {
-
-        	 int curX = e.getX();
-    	     int curY = e.getY();
-    	     
-    	     painting =  Driver.global.painting() ; // gets a safe copy 
-    	     Graphics2D g2 = (Graphics2D)painting.getGraphics();
+             
+                painting =  Driver.global.painting() ; // gets a safe copy 
+                Graphics2D g2 = (Graphics2D)painting.getGraphics();
     	      
-    	      
-
     	     //toolBox.hold(painting, curX, curY);  // pass by reference so it will alter painting and wo do not need to wory about passing values.
     	     //g2.setColor(Color.BLACK);
     	     //g2.drawLine(0, 0, curX, curY);
@@ -141,18 +119,16 @@ public class gui_Canvas extends JPanel
          }
           
          public void mouseDragged(MouseEvent e) {
-        	 int curX = e.getX();
-    	     int curY = e.getY();
+        	int curX = e.getX();
+                int curY = e.getY();
     	     
-    	     painting =  Driver.global.painting() ; // gets a safe copy 
-    	     Graphics2D g2 = (Graphics2D)painting.getGraphics();
-    	      
-    	      
+                painting =  Driver.global.painting() ; // gets a safe copy 
+                Graphics2D g2 = (Graphics2D)painting.getGraphics();
 
-    	     toolBox.hold(painting, curX, curY);  // pass by reference so it will alter painting and wo do not need to wory about passing values.
-    	     
-    	      
-    	     paint(); //paints what things look like.
+                toolBox.onMouseHold(painting, curX, curY);  // pass by reference so it will alter painting and wo do not need to wory about passing values.
+
+
+                paint(); //paints what things look like.
          }
     }
     
