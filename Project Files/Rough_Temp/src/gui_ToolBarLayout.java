@@ -117,6 +117,8 @@ public class gui_ToolBarLayout extends JPanel {
         endNote.setForeground(Color.lightGray);
         endNote.setAlignmentX(Component.CENTER_ALIGNMENT);
         
+  
+        
         JPanel options = new JPanel();
         {
         	options.setLayout(new BoxLayout(options, BoxLayout.PAGE_AXIS));
