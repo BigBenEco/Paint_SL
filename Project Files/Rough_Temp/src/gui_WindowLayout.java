@@ -221,7 +221,7 @@ public class gui_WindowLayout extends JFrame implements ActionListener
 	{
         
            public void mousePressed(MouseEvent e) {
-                  System.out.println("mouse at "+e.getX()+" and "+e.getY() );
+                  //System.out.println("mouse at "+e.getX()+" and "+e.getY() );
            }
         
 	   public void mouseClicked(MouseEvent e) {}
@@ -238,7 +238,7 @@ public class gui_WindowLayout extends JFrame implements ActionListener
     	
           
          public void mouseMoved(MouseEvent e) {
-             if(e.getX() < 20)
+          /*   if(e.getX() < 20)
              {
                  System.out.println("mouse at "+e.getX()+" and "+e.getY() );
                  toolBar.setSize(29, 29);
@@ -247,7 +247,7 @@ public class gui_WindowLayout extends JFrame implements ActionListener
              else{
                  toolBar.setSize(293, 293); 
                  toolBar.repaint();
-             }
+             }*/
          }
           
          public void mouseDragged(MouseEvent e) {
@@ -290,7 +290,6 @@ public class gui_WindowLayout extends JFrame implements ActionListener
 	       {
 	    	   //canvas.toolBox.myTool = Tool_Box.tool.Mouse;
 	    	   gui_About about = new gui_About();
-	    	   about.setVisible(true);
 	       }
     }
     

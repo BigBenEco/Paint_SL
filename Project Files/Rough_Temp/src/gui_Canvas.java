@@ -25,7 +25,7 @@ public class gui_Canvas extends JPanel
 		width = wWidth;
 		height = wHeight;
 		
-		//setBackground(Color.RED);
+		setBackground(Color.WHITE);
 		addMouseListener(new MouseComp());
 		addMouseMotionListener( new MouseTracker() );
 		setPreferredSize(new Dimension(wWidth, wHeight));
@@ -61,16 +61,14 @@ public class gui_Canvas extends JPanel
     	Graphics2D g2 = (Graphics2D)getGraphics();
     	super.paintComponent(g2);
     	g2.drawImage(painting, 0, 0, null);
-    	//g2.drawImage(painting, null, 0, 0);   //Delete this line Ben, or no? What does it do? What is its purpose?
-        //super.paintComponent(g2); //seems to refresh things
     }
     
     public void refresh()
     {
-            painting =  Driver.global.painting() ; // gets a safe copy 
+        painting =  Driver.global.painting() ; // gets a safe copy 
 	    Graphics2D g2 = (Graphics2D)getGraphics();
 	    super.paintComponent(g2);
-            g2.drawImage(painting, 0, 0, null);
+        g2.drawImage(painting, 0, 0, null);
     }
     
     public class MouseComp implements MouseListener
@@ -119,12 +117,10 @@ public class gui_Canvas extends JPanel
          }
           
          public void mouseDragged(MouseEvent e) {
-        	int curX = e.getX();
+        	 int curX = e.getX();
                 int curY = e.getY();
     	     
                 painting =  Driver.global.painting() ; // gets a safe copy 
-                Graphics2D g2 = (Graphics2D)painting.getGraphics();
-
                 toolBox.onMouseHold(painting, curX, curY);  // pass by reference so it will alter painting and wo do not need to wory about passing values.
 
 

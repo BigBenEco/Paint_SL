@@ -1,53 +1,40 @@
-import java.awt.Container;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import java.awt.Graphics;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class gui_About extends JFrame {
-	
-	public Container contents;
-	public AboutPage Me;
-	public BufferedImage img;
-	public int myWidth = 640;
-	public int myHeight = 480;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JWindow;
+
+public class gui_About extends JWindow {
+
 	
 	gui_About()
 	{
-		super("About");
-		contents = getContentPane();
 		
-		Me = new AboutPage();
-		
-		try {
-		    img = ImageIO.read(new File("oval 64.png"));
-		} catch (IOException e) {
-		}
-		
-		contents.add(Me);
-		
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int wScreen = (int) screenSize.getWidth();
-        int hScreen = (int) screenSize.getHeight();
-		int myX = ( wScreen / 2 ) - ( myWidth / 2 );
-		int myY = ( hScreen / 2 ) - ( myHeight / 2 );
-	
-		setLocation(myX, myY);
-		setSize(myWidth, myHeight);
+        JLabel l = new JLabel(new ImageIcon("about.jpg"));
+        getContentPane().add(l, BorderLayout.CENTER);
+        pack();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension labelSize = l.getPreferredSize();
+        setLocation(screenSize.width/2 - (labelSize.width/2),
+                    screenSize.height/2 - (labelSize.height/2));
+        
+        addMouseListener(new MouseAdapter()
+        {
+            public void mousePressed(MouseEvent e)
+            {
+                setVisible(false);
+                dispose();
+            }
+        });
+        
+        
+        setVisible(true);
+        screenSize = null;
+        labelSize = null;
 	}
 	
-	public class AboutPage extends JPanel{		
-		protected void paintComponent(Graphics g) {
-	        super.paintComponent(g);
-	        g.drawImage(img, 0, 0, null);
-	    }
-	
-	}
 }
